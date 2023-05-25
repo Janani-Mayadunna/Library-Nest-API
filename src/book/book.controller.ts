@@ -22,4 +22,12 @@ export class BookController {
   async getAllBooks(@Query() query: ExpressQuery): Promise<Book[]> {
     return this.bookService.findAll(query);
   }
+
+  @Post()
+  async createBook(
+    @Body()
+    book: CreateBookDto,
+  ): Promise<Book> {
+    return this.bookService.create(book);
+  }
 }

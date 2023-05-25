@@ -33,4 +33,9 @@ export class BookService {
       .skip(skip);
     return books;
   }
+
+  async create(book: Book): Promise<Book> {
+    const res = new this.bookModel(book);
+    return res.save();
+  }
 }
