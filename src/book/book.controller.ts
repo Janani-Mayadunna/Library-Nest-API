@@ -48,4 +48,12 @@ export class BookController {
   ): Promise<Book> {
     return this.bookService.updateById(id, book);
   }
+
+  @Delete(':id')
+  async deleteBook(
+    @Param('id')
+    id: string,
+  ): Promise<Book> {
+    return this.bookService.deleteById(id);
+  }
 }
