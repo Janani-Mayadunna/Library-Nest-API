@@ -38,4 +38,15 @@ export class BookService {
     const res = new this.bookModel(book);
     return res.save();
   }
+  async findById(id: string): Promise<Book> {
+    const isValidId = isValidObjectId(id);
+    if (!isValidId) {
+      throw new BadRequestException('Invalid book id');
+    }
+    const res = await this.bookModel.findById(id);
+    if (!res) {
+      throw new NotFoundException('Book not found');
+    }
+    return res;
+  }
 }

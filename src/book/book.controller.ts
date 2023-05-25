@@ -30,4 +30,12 @@ export class BookController {
   ): Promise<Book> {
     return this.bookService.create(book);
   }
+
+  @Get(':id')
+  async getBookById(
+    @Param('id')
+    id: string,
+  ): Promise<Book> {
+    return this.bookService.findById(id);
+  }
 }
