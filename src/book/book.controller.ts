@@ -38,4 +38,14 @@ export class BookController {
   ): Promise<Book> {
     return this.bookService.findById(id);
   }
+
+  @Put(':id')
+  async updateBook(
+    @Param('id')
+    id: string,
+    @Body()
+    book: UpdateBookDto,
+  ): Promise<Book> {
+    return this.bookService.updateById(id, book);
+  }
 }
